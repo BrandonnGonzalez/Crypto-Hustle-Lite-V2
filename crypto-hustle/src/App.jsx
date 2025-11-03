@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import CoinInfo from "./components/CoinInfo"
-
+import SideNav from "./components/SideNav"
 
 const API_KEY = import.meta.env.VITE_APP_API_KEY;
 
@@ -29,7 +29,7 @@ function App() {
   useEffect(() => {
     const fetchAllCoinData = async () => {
       const response = await fetch(
-        `https://min-api.cryptocompare.com/data/top/totaltoptiervol?limit=10&tsym=USD&api_key=${API_KEY}`
+        `https://min-api.cryptocompare.com/data/top/totaltoptiervol?limit=30&tsym=USD&api_key=${API_KEY}`
       );
       const data = await response.json();
       setList(data);
@@ -40,6 +40,7 @@ function App() {
   console.log(list?.Data);
   return (
     <div className="whole-page">
+      <SideNav />
       <h1>My Crypto List</h1>
       <input
       type="text"
