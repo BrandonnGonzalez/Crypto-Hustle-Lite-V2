@@ -24,7 +24,7 @@ function CoinInfo({ image, name, symbol }) {
                 src={`https://www.cryptocompare.com${image}`}
                 alt={`Small icon for ${name} crypto coin`}
             />
-            {name}
+            {name} ({symbol})
             {price ? ` $${price} USD` : null}
             </li>
 

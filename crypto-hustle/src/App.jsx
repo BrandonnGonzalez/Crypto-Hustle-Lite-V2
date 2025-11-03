@@ -47,57 +47,41 @@ function App() {
       onChange={(inputString) => searchItems(inputString.target.value)} 
       />
 
-      {searchInput.length > 0
-        ? filteredResults
-            .map((coin) => {
-              const coinData = coin.CoinInfo;
-              if (
-                coinData.Algorithm !== "N/A" &&
-                coinData.ProofType !== "N/A"
-              ) {
-                return (
-                  <CoinInfo
-                    key={coinData.Name}
-                    image={coinData.ImageUrl}
-                    name={coinData.FullName}
-                    symbol={coinData.Name}
-                  />
-                );
-              }
-              return null;
-            })
-        : list?.Data
-            .map((data) => data.CoinInfo)
-            .filter(
-              (coinData) =>
-                coinData.Algorithm !== "N/A" &&
-                coinData.ProofType !== "N/A"
-            )
-            .map((coinData) => (
-              <CoinInfo
-                key={coinData.Name}
-                image={coinData.ImageUrl}
-                name={coinData.FullName}
-                symbol={coinData.Name}
-              />
-            ))}
-
-
-      
       <ul>
-        {list?.Data.map((data) => data.CoinInfo)
-          .filter(
-            (coinData) =>
-              coinData.Algorithm !== 'N/A' && coinData.ProofType !== 'N/A'
-          )
-          .map((coinData) => (
-            <CoinInfo
-              key={coinData.Name}
-              image={coinData.ImageUrl}
-              name={coinData.FullName}
-              symbol={coinData.Name}
-            />
-          ))}
+        {searchInput.length > 0
+          ? filteredResults
+              .map((coin) => {
+                const coinData = coin.CoinInfo;
+                if (
+                  coinData.Algorithm !== "N/A" &&
+                  coinData.ProofType !== "N/A"
+                ) {
+                  return (
+                    <CoinInfo
+                      key={coinData.Name}
+                      image={coinData.ImageUrl}
+                      name={coinData.FullName}
+                      symbol={coinData.Name}
+                    />
+                  );
+                }
+                return null;
+              })
+          : list?.Data
+              .map((data) => data.CoinInfo)
+              .filter(
+                (coinData) =>
+                  coinData.Algorithm !== "N/A" &&
+                  coinData.ProofType !== "N/A"
+              )
+              .map((coinData) => (
+                <CoinInfo
+                  key={coinData.Name}
+                  image={coinData.ImageUrl}
+                  name={coinData.FullName}
+                  symbol={coinData.Name}
+                />
+              ))}
       </ul>
     </div>
   );
