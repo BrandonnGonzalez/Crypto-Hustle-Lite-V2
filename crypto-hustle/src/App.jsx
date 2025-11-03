@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import CoinInfo from "./components/CoinInfo"
+
 
 const API_KEY = import.meta.env.VITE_APP_API_KEY;
 
@@ -17,7 +19,7 @@ function App() {
     fetchAllCoinData().catch(console.error);
   }, []);
 
-  console.log(list.Data);
+  console.log(list?.Data);
   return (
     <div className="whole-page">
       <h1>My Crypto List</h1>
@@ -28,7 +30,12 @@ function App() {
               coinData.Algorithm !== 'N/A' && coinData.ProofType !== 'N/A'
           )
           .map((coinData) => (
-            <li key={coinData.FullName}>{coinData.FullName}</li>
+            <CoinInfo
+              key={coinData.Name}
+              image={coinData.ImageUrl}
+              name={coinData.FullName}
+              symbol={coinData.Name}
+            />
           ))}
       </ul>
     </div>
