@@ -12,6 +12,7 @@ function App() {
 
   const searchItems = searchValue => {
     setSearchInput(searchValue)
+    if (!list || !list.Data) return; // Prevent crash if list hasn't loaded yet
     if (searchValue !== "") {
       const filteredData = list.Data.filter((item) => 
         Object.values(item.CoinInfo)
